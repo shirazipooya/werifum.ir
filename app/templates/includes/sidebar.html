@@ -1,0 +1,35 @@
+<div class="app-sidebar">
+
+    <div class="logo">
+        <a href="{{ url_for( 'dashboard.dashboard' ) }}" class="logo-icon"><span class="logo-text">WERI</span></a>
+        <div class="sidebar-user-switcher user-activity-online">
+
+                {% if current_user.avatar %}
+                    <img src="{{ url_for('static', filename='uploads/' + current_user.avatar) }}">
+                {% else %}
+                    <img src="{{ url_for('static', filename='images/avatars/avatar.png') }}">
+                {% endif %}
+                <span class="activity-indicator"></span>
+                <span class="user-info-text">{{ current_user.username }}<br><span class="user-state-info">On a call</span></span>
+
+        </div>
+    </div>
+
+    <div class="app-menu">
+        <ul class="accordion-menu">
+            <li class="sidebar-title">
+                Apps
+            </li>
+            <li class="active-page">
+                <a href="{{ url_for( 'dashboard.dashboard' ) }}" class="active"><i class="material-icons-two-tone">dashboard</i>Dashboard</a>
+            </li>
+            <li>
+                <a href="{{ url_for( 'project.project' ) }}"><i class="material-icons-two-tone">apps</i>Project<span class="badge rounded-pill badge-danger float-end">87</span></a>
+            </li>
+            <li>
+                <a href="mailbox.html"><i class="material-icons-two-tone">done</i>Todo<span class="badge rounded-pill badge-danger float-end">87</span></a>
+            </li>
+        </ul>
+    </div>
+    
+</div>

@@ -1,0 +1,11 @@
+/* Your Custom CSS Goes here */
+.app.sidebar-hidden.full-width-header .app-sidebar .logo.hidden-sidebar-logo {
+    width: 300px !important;
+}
+
+
+@media (max-width: 1199px) {
+    .app.full-width-header .app-sidebar .logo {
+        width: 300px !important;
+    }
+}
