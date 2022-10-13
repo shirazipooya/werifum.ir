@@ -20,14 +20,17 @@
             <li class="sidebar-title">
                 Apps
             </li>
-            <li class="active-page">
-                <a href="{{ url_for( 'dashboard.dashboard' ) }}" class="active"><i class="material-icons-two-tone">dashboard</i>Dashboard</a>
+            <li class="{{ 'active-page' if active_page == 'Dashboard' else '' }}">
+                <a href="{{ url_for( 'dashboard.dashboard' ) }}">
+                    <i class="material-icons-two-tone">dashboard</i>
+                    Dashboard
+                </a>
             </li>
-            <li>
-                <a href="{{ url_for( 'project.project' ) }}"><i class="material-icons-two-tone">apps</i>Project<span class="badge rounded-pill badge-danger float-end">87</span></a>
-            </li>
-            <li>
-                <a href="mailbox.html"><i class="material-icons-two-tone">done</i>Todo<span class="badge rounded-pill badge-danger float-end">87</span></a>
+            <li class="{{ 'active-page' if active_page == 'Project' else '' }}">
+                <a href="{{ url_for( 'project.project' ) }}">
+                    <i class="material-icons-two-tone">view_day</i>
+                    Project
+                </a>
             </li>
         </ul>
     </div>

@@ -1,4 +1,20 @@
-/* Your Custom CSS Goes here */
+
+@font-face {
+    font-family: "Vazirmatn-Regular";
+    font-style: normal;
+    font-weight: 100;
+    src: url("../fonts/Vazirmatn/Vazirmatn-Regular.ttf") format("ttf"),
+      url("../fonts/Vazirmatn/Vazirmatn-Regular.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "Vazirmatn-ExtraBold";
+    font-style: normal;
+    font-weight: 100;
+    src: url("../fonts/Vazirmatn/Vazirmatn-ExtraBold.ttf") format("ttf"),
+      url("../fonts/Vazirmatn/Vazirmatn-ExtraBold.woff2") format("woff2");
+}
+
 .app.sidebar-hidden.full-width-header .app-sidebar .logo.hidden-sidebar-logo {
     width: 300px !important;
 }
@@ -8,4 +24,50 @@
     .app.full-width-header .app-sidebar .logo {
         width: 300px !important;
     }
+}
+
+.todo-menu .todo-status-filter li a i {
+    margin-left: 10px;
+    margin-right: 0;
+}
+
+.todo-menu .todo-menu-title {
+    padding: 0 10px 10px 0;
+}
+
+.todo-list .todo-item .todo-item-title .badge {
+    margin-left: 0;
+    margin-right: 10px;
+}
+
+.list-unstyled {
+    padding-right: 0;
+}
+
+.p-font {
+    font-family: 'Vazirmatn-Regular' !important;
+}
+
+.p-font-b {
+    font-family: 'Vazirmatn-ExtraBold' !important;
+}
+
+.pl-2 {
+    padding-left: 0.5rem;
+}
+
+.pr {
+    padding-right: 2rem;
+}
+
+.todo-list .todo-item .todo-item-actions {
+    padding-left: 0;
+}
+
+.todo-list .todo-item .todo-item-actions .todo-item-edit {
+    color: #E91E63;
+}
+
+.material-icons.md-18 { 
+    font-size: 18px; 
 }

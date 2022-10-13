@@ -38,5 +38,6 @@ login_manager.init_app(app=app)
 db.init_app(app=app)
 
 from app.users.models import User
+from app.project.models import Project
 
 migrate.init_app(app=app, db=db)
