@@ -92,7 +92,8 @@
 
                                                     </div>
                                                     <div class="col-1 todo-item-actions">
-                                                        <a href="#" class="todo-item-edit"><i class="material-icons-outlined no-m">edit</i></a>
+                                                        <a href="{{ url_for( 'project.project_update', project_id=project.id ) }}" class="todo-item-edit"><i class="material-icons-outlined no-m">edit</i></a>
+                                                        
                                                     </div>
                                                 </li>
                                             {% endfor %}

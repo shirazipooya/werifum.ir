@@ -76,6 +76,28 @@ def create_project():
         )
         db.session.add(project)
         db.session.commit()
-        flash(message=f"Project Created Successfully!", category="success")
+        flash(message=f"پروژه با موفقیت ایجاد گردید!", category="success")
         return redirect(location=url_for(endpoint="project.project"))
     return render_template("project/create-project.html", form=form)
+
+
+
+@bp_project.route("/project/<int:project_id>/update", methods=["GET", "POST"])
+@login_required
+def project_update(project_id):
+    project = Project.query.get_or_404(project_id)
+    form = CreateProjectForm()
+    if form.validate_on_submit():
+        project.title = form.title.data
+        project.status = form.status.data
+        project.organization = form.organization.data
+        project.person = form.person.data
+        db.session.commit()
+        flash(message="پروژه با موفقیت بروزرسانی گردید!", category="success")
+        return redirect(location=url_for(endpoint="project.project"))
+    elif request.method == "GET":
+        form.title.data = project.title
+        form.status.data = project.status
+        form.organization.data = project.organization
+        form.person.data = project.person
+    return render_template("project/update-project.html", form=form)

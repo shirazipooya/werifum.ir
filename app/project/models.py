@@ -4,7 +4,7 @@ from app.extensions import db, login_manager
 
 class Project(BaseModel):
     
-    title = db.Column(db.String(300), unique=True, nullable=False)
+    title = db.Column(db.String(300), unique=False, nullable=False)
     status = db.Column(db.String(100), unique=False, nullable=False)
     organization = db.Column(db.String(100), unique=False, nullable=False)
     person = db.Column(db.String(100), unique=False, nullable=False)
