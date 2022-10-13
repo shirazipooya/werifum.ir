@@ -15,7 +15,8 @@ bp_project = Blueprint(
 @login_required
 def project():
     num = Project.query.order_by("status").all()
-    projects = Project.query.order_by("status").all()
+    page = request.args.get('page', 1, type=int)
+    projects = Project.query.order_by("status").paginate(page=page, per_page=6)
     return render_template(
         template_name_or_list="project/index.html",
         projects=projects,
@@ -28,7 +29,8 @@ def project():
 @login_required
 def project_done():
     num = Project.query.order_by("status").all()
-    projects = Project.query.filter_by(status="خاتمه یافته").order_by(Project.title.desc()).all()
+    page = request.args.get('page', 1, type=int)
+    projects = Project.query.filter_by(status="خاتمه یافته").order_by(Project.title.desc()).paginate(page=page, per_page=6)
     return render_template(
         template_name_or_list="project/index.html",
         projects=projects,
@@ -41,7 +43,8 @@ def project_done():
 @login_required
 def project_proposal():
     num = Project.query.order_by("status").all()
-    projects = Project.query.filter_by(status="پروپوزال").order_by(Project.title.desc()).all()
+    page = request.args.get('page', 1, type=int)
+    projects = Project.query.filter_by(status="پروپوزال").order_by(Project.title.desc()).paginate(page=page, per_page=6)
     return render_template(
         template_name_or_list="project/index.html",
         projects=projects,
@@ -54,7 +57,8 @@ def project_proposal():
 @login_required
 def project_in_progress():
     num = Project.query.order_by("status").all()
-    projects = Project.query.filter_by(status="در حال انجام").order_by(Project.title.desc()).all()
+    page = request.args.get('page', 1, type=int)
+    projects = Project.query.filter_by(status="در حال انجام").order_by(Project.title.desc()).paginate(page=page, per_page=6)
     return render_template(
         template_name_or_list="project/index.html",
         projects=projects,

@@ -62,21 +62,21 @@
                                     <div class="todo-list">
                                         {% include 'includes/messages.html' %}
                                         <ul class="list-unstyled">
-                                            {% for project in projects %}
+                                            {% for project in projects.items %}
                                                 <li class="todo-item">
                                                     <div class="col-11 todo-item-content">
                                                         <span class="p-font-b todo-item-title">
                                                             <i class="material-icons-outlined">minimize</i>
                                                             {{ project.title }}
                                                             {% if project.status == "خاتمه یافته" %}
-                                                            <span class="p-font-b badge badge-style-bordered rounded-pill badge-success">{{ project.status }}</span>
-                                                        {% elif project.status == "در حال انجام" %}
-                                                            <span class="p-font-b badge badge-style-bordered rounded-pill badge-info">{{ project.status }}</span>
-                                                        {% elif project.status == "پروپوزال" %}
-                                                            <span class="p-font-b badge badge-style-bordered rounded-pill badge-danger">{{ project.status }}</span>
-                                                        {% else %}
-                                                            <span class="p-font-b badge badge-style-bordered rounded-pill badge-dark">{{ project.status }}</span>
-                                                        {% endif %}
+                                                                <span class="p-font-b badge badge-style-bordered rounded-pill badge-success">{{ project.status }}</span>
+                                                            {% elif project.status == "در حال انجام" %}
+                                                                <span class="p-font-b badge badge-style-bordered rounded-pill badge-info">{{ project.status }}</span>
+                                                            {% elif project.status == "پروپوزال" %}
+                                                                <span class="p-font-b badge badge-style-bordered rounded-pill badge-danger">{{ project.status }}</span>
+                                                            {% else %}
+                                                                <span class="p-font-b badge badge-style-bordered rounded-pill badge-dark">{{ project.status }}</span>
+                                                            {% endif %}
 
                                                         </span>
                                                         <div class="p-font pt-2 px-4">
@@ -96,6 +96,43 @@
                                                         
                                                     </div>
                                                 </li>
+                                            {% endfor %}
+                                        </ul>
+                                        <ul class="pagination" dir="rtl">
+                                            {% for page_num in projects.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+                                                {% if page_num %}
+                                                    {% if projects.page == page_num %}
+                                                        <li class="page-item">
+                                                            {% if page_name=="all" %}
+                                                                <a class="btn btn-primary mb-4" href="{{ url_for('project.project', page=page_num) }}">{{ page_num }}</a>
+                                                            {% elif page_name=="in_progress" %}
+                                                                <a class="btn btn-primary mb-4" href="{{ url_for('project.project_in_progress', page=page_num) }}">{{ page_num }}</a>
+                                                            {% elif page_name=="done" %}
+                                                                <a class="btn btn-primary mb-4" href="{{ url_for('project.project_done', page=page_num) }}">{{ page_num }}</a>
+                                                            {% elif page_name=="proposal" %}
+                                                                <a class="btn btn-primary mb-4" href="{{ url_for('project.project_proposal', page=page_num) }}">{{ page_num }}</a>
+                                                            {% else %}
+                                                                <a class="btn btn-primary mb-4" href="{{ url_for('project.project', page=page_num) }}">{{ page_num }}</a>
+                                                            {% endif %}
+                                                        </li>
+                                                    {% else %}
+                                                        <li class="page-item">
+                                                            {% if page_name=="all" %}
+                                                                <a class="btn btn-outline-primary mb-4" href="{{ url_for('project.project', page=page_num) }}">{{ page_num }}</a>
+                                                            {% elif page_name=="in_progress" %}
+                                                                <a class="btn btn-outline-primary mb-4" href="{{ url_for('project.project_in_progress', page=page_num) }}">{{ page_num }}</a>
+                                                            {% elif page_name=="done" %}
+                                                                <a class="btn btn-outline-primary mb-4" href="{{ url_for('project.project_done', page=page_num) }}">{{ page_num }}</a>
+                                                            {% elif page_name=="proposal" %}
+                                                                <a class="btn btn-outline-primary mb-4" href="{{ url_for('project.project_proposal', page=page_num) }}">{{ page_num }}</a>
+                                                            {% else %}
+                                                                <a class="btn btn-outline-primary mb-4" href="{{ url_for('project.project', page=page_num) }}">{{ page_num }}</a>
+                                                            {% endif %}
+                                                        </li>
+                                                    {% endif %}
+                                                {% else %}
+                                                    ...
+                                                {% endif %}
                                             {% endfor %}
                                         </ul>
                                     </div>
