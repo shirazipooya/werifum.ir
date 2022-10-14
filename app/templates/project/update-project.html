@@ -57,9 +57,9 @@
                                             <div class="col-md-4 p-font-b">
                                                 {{ form.status.label(class="form-label mt-4") }}
                                                 <select class="text-center form-select" type="search" name="status" placeholder="وضعیت طرح">
-                                                    <option value='پروپوزال'>پروپوزال</option>
-                                                    <option value='خاتمه یافته'>خاتمه یافته</option>
-                                                    <option value='در حال انجام'>در حال انجام</option>
+                                                    <option value='پروپوزال' {% if form.status == "پروپوزال" %} selected {% endif %}>پروپوزال</option>
+                                                    <option value='خاتمه یافته' {% if form.status == "خاتمه یافته" %} selected {% endif %}>خاتمه یافته</option>
+                                                    <option value='در حال انجام' {% if form.status == "در حال انجام" %} selected {% endif %}>در حال انجام</option>
                                                 </select>
                                                 {% if form.status.errors %}
                                                     {% for error in form.status.errors %}
