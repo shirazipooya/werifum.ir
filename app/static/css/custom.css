@@ -71,3 +71,10 @@
 .material-icons.md-18 { 
     font-size: 18px; 
 }
+
+body, .app-container, .app-header {
+    -webkit-transition: none;
+    -moz-transition: none;
+    -o-transition: none;
+    transition: none;
+}
